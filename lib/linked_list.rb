@@ -4,6 +4,21 @@ class LinkedList
     @head = Node.new(:head, Node.new(:tail, nil))
   end
   
+  def prepend(value)
+    @head.insert_after(value)
+  end
+
+  def append(value)
+    node = @head
+    loop do 
+      if node.pointer.value == :tail
+	node.insert_after(value)
+	break
+      end
+      node = node.pointer
+    end
+  end
+  
   def to_s
     string = ""
     crawl_list do |node| 
