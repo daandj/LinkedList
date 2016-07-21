@@ -18,6 +18,26 @@ class LinkedList
       node = node.pointer
     end
   end
+
+  def size
+    count = 0
+    crawl_list { |node| count += 1 }
+    count
+  end
+  
+  def head
+    return @head
+  end
+
+  def tail
+    node = @head
+    loop do
+      if node.value == :tail
+	return node
+      end
+      node = node.pointer
+    end
+  end
   
   def to_s
     string = ""
