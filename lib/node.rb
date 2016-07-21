@@ -6,4 +6,8 @@ class Node
     @pointer = pointer
   end
 
+  def insert_after(value)
+    @pointer = Node.new(value, @pointer)
+  end
+
 end
