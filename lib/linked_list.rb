@@ -12,7 +12,7 @@ class LinkedList
     node = @head
     loop do 
       if node.pointer.value == :tail
-	node.insert_after(value)
+	node.insert_next(value)
 	break
       end
       node = node.pointer
@@ -36,6 +36,25 @@ class LinkedList
 	return node
       end
       node = node.pointer
+    end
+  end
+
+  def at(index)
+    count = 0
+    crawl_list do |node|
+      if count == index
+	return node
+      else
+	count += 1
+      end
+    end
+  end
+
+  def pop
+    crawl_list do |node|
+      if node.pointer.pointer.value == :tail
+	node.delete_next
+      end
     end
   end
   
