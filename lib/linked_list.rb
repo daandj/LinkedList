@@ -5,7 +5,7 @@ class LinkedList
   end
   
   def prepend(value)
-    @head.insert_after(value)
+    @head.insert_next(value)
   end
 
   def append(value)
@@ -55,6 +55,25 @@ class LinkedList
       if node.pointer.pointer.value == :tail
 	node.delete_next
       end
+    end
+  end
+
+  def contains?(value)
+    crawl_list do |node|
+      if node.value == value
+	return true
+      end
+    end
+    return false
+  end
+
+  def find(value)
+    count = 0
+    crawl_list do |node|
+      if node.value == value
+	return count
+      end
+      count += 1
     end
   end
   
