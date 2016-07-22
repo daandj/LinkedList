@@ -84,7 +84,25 @@ class LinkedList
     end
     string += "nil"
   end
+
+  def insert_at(index, value)
+   if index == 0
+     @head.insert_next(value)
+   else
+     at(index-1).insert_next(value)
+   end
+  end
   
+  def remove_at(index)
+    if size != 0 
+      if index == 0 
+	@head.delete_next
+      else
+        at(index-1).delete_next
+      end
+    end
+  end
+
   private
 
   def crawl_list
